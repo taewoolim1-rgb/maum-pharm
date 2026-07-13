@@ -50,8 +50,16 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
 
       if (totalMinutes < openMinutes) {
         setMinutesUntilOpen(openMinutes - totalMinutes);
+        setMinutesUntilClose(0);
       } else if (totalMinutes < closeMinutes) {
         setMinutesUntilClose(closeMinutes - totalMinutes);
+        setMinutesUntilOpen(0);
+      } else {
+        // Past closing time: count down to tomorrow's opening
+        const tomorrowIsWeekend = (day + 1) % 7 === 0 || (day + 1) % 7 === 6;
+        const tomorrowOpenMinutes = tomorrowIsWeekend ? 15 * 60 : 8.5 * 60;
+        setMinutesUntilOpen((24 * 60 - totalMinutes) + tomorrowOpenMinutes);
+        setMinutesUntilClose(0);
       }
     };
 

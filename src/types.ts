@@ -7,13 +7,6 @@ export type TabId = 'home' | 'location';
 
 export type Language = 'ko' | 'en' | 'zh';
 
-export interface ChatMessage {
-  id: string;
-  role: 'user' | 'model';
-  content: string;
-  timestamp: Date;
-}
-
 export interface PharmacistProfile {
   id: string;
   name: string;
