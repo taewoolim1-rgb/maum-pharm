@@ -78,17 +78,17 @@ export default function App() {
       footerPrivacy: "개인정보처리방침",
     },
     en: {
-      announcement: "Jeju Maum Pharmacy is open Mon-Fri 08:30~22:00, Weekends & Holidays 15:00~22:00 for our patients.",
+      announcement: "Heart Pharm is open MON~FRI 08:30~22:00, SAT/SUN 15:00~22:00 for our patients.",
       announcementBadge: "365 DAYS OPEN",
       headerOpen: "Open Now",
       headerClosed: "Closed Now",
       menuHome: "Home",
       menuAbout: "About Us",
       menuLocation: "Directions",
-      footerDesc: "Jeju Maum Pharmacy prioritizes professional prescription dispensing and premium medication guidance to care for our community's body and mind.",
+      footerDesc: "Heart Pharm prioritizes professional prescription dispensing and premium medication guidance to care for our community's body and mind.",
       footerRegTitle: "Pharmacy Registration Info",
       footerNameLabel: "Name",
-      footerNameValue: "Maum Pharmacy",
+      footerNameValue: "Heart Pharm",
       footerPharmacistLabel: "Chief Pharmacist",
       footerPharmacistValue: "Sung-woo Lim",
       footerZipLabel: "ZIP",
@@ -96,12 +96,12 @@ export default function App() {
       footerAddrValue: "Rooms 103 & 110, 73 Doryeong-ro, Jeju-si, Jeju-do",
       footerTelLabel: "Tel",
       footerFaxLabel: "Fax",
-      footerCopyright: "© 2026 Jeju Maum Pharmacy. All Rights Reserved. Unauthorized duplication of all designs and contents is prohibited.",
+      footerCopyright: "© 2026 Heart Pharm. All Rights Reserved. Unauthorized duplication of all designs and contents is prohibited.",
       footerTerms: "Terms of Use",
       footerPrivacy: "Privacy Policy",
     },
     zh: {
-      announcement: "济州心药店在工作日 08:30~22:00，周末及公休日 15:00~22:00 期间为您提供安全服务。",
+      announcement: "心药店营业时间：周一至周五 08:30~22:00，周六周日 15:00~22:00，竭诚为您服务。",
       announcementBadge: "365天全年无休",
       headerOpen: "正在营业中",
       headerClosed: "已暂停营业",
@@ -140,17 +140,6 @@ export default function App() {
 
   return (
     <div id="app-root" className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans select-none antialiased">
-      {/* 1. Top Announcement Bar */}
-      <div id="top-announcement" className="bg-emerald-950 text-white py-2 px-4 border-b border-emerald-900/40 text-center text-[11px] font-semibold flex items-center justify-center gap-1.5 z-50">
-        <span className="inline-block px-1.5 py-0.2 rounded bg-emerald-800/60 text-emerald-200 border border-emerald-700/50 text-[9px] font-bold uppercase">
-          {curr.announcementBadge}
-        </span>
-        <span className="text-emerald-100 font-light">
-          {curr.announcement}
-        </span>
-        <span className="hidden md:inline-block text-emerald-400">| {curr.footerTelLabel}: 064-900-4057</span>
-      </div>
-
       {/* 2. Sticky Glassmorphism Header */}
       <header id="main-header" className="sticky top-0 bg-white/80 backdrop-blur-md border-b border-slate-100 z-40 transition-all">
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
@@ -168,9 +157,9 @@ export default function App() {
             </div>
             <div>
               <h1 className="text-lg font-black tracking-tighter text-slate-900 group-hover:text-emerald-800 transition-colors">
-                {language === 'ko' ? '제주마음약국' : language === 'en' ? 'Jeju Maum' : '济州心药店'}
+                {language === 'ko' ? '제주마음약국' : language === 'en' ? 'Heart Pharm' : '济州心药店'}
               </h1>
-              <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest leading-none">Jeju Maum Pharmacy</p>
+              <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest leading-none">Heart Pharm</p>
             </div>
           </div>
 
@@ -203,7 +192,7 @@ export default function App() {
           </nav>
 
           {/* Desktop Right Actions Area: Language Selector + Open Status + Call button */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 ml-auto">
             {/* Global Language Selector (Desktop) */}
             <div className="flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/45">
               <Globe className="w-3.5 h-3.5 text-slate-400 mx-1.5" />
@@ -232,7 +221,7 @@ export default function App() {
             <button
               id="header-call-btn"
               onClick={() => handleTabChange('location')}
-              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
+              className="px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-400" />
               064-900-4057
@@ -353,9 +342,9 @@ export default function App() {
               </div>
               <div>
                 <h3 className="text-sm font-extrabold text-white tracking-tight">
-                  {language === 'ko' ? '제주마음약국' : language === 'en' ? 'Jeju Maum' : '济州心药店'}
+                  {language === 'ko' ? '제주마음약국' : language === 'en' ? 'Heart Pharm' : '济州心药店'}
                 </h3>
-                <p className="text-[8px] text-slate-500 font-bold uppercase tracking-wider">Jeju Maum Pharmacy</p>
+                <p className="text-[8px] text-slate-500 font-bold uppercase tracking-wider">Heart Pharm</p>
               </div>
             </div>
             <p className="text-[11px] text-slate-500 leading-relaxed font-light max-w-md">
@@ -378,8 +367,7 @@ export default function App() {
             <p className="font-light">
               <strong>{curr.footerNameLabel}:</strong> {curr.footerNameValue} | <strong>{curr.footerPharmacistLabel}:</strong> {curr.footerPharmacistValue} | <strong>{curr.footerZipLabel}:</strong> 63127<br />
               <strong>{curr.footerAddrLabel}:</strong> {curr.footerAddrValue}<br />
-              <strong>{curr.footerTelLabel}:</strong> 064-900-4057 | <strong>{curr.footerFaxLabel}:</strong> 064-900-4056<br />
-              <strong>Email: support@jejumaum.com</strong>
+              <strong>{curr.footerTelLabel}:</strong> 064-900-4057 | <strong>{curr.footerFaxLabel}:</strong> 064-900-4056
             </p>
           </div>
         </div>
