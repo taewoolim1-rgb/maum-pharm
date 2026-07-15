@@ -203,7 +203,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         icon: <Car className="w-5.5 h-5.5 text-rose-600" />,
         title: t.en.carTitle,
         lines: [
-          '⚠️ [NO PARKING AVAILABLE] There is no parking space for private vehicles in Yeondong Felice Building or Maum Pharmacy.',
+          '⚠️ [NO PARKING AVAILABLE] There is no parking space for private vehicles in Yeondong Felice Building or Heart Pharm.',
           'The main street of Doryeong-ro and surrounding streets are strict, continuous camera-enforced parking fine zones. Visitors are strongly advised to use public transit.',
           'If you absolutely must drive, you must independently find and pay for nearby public street parking or paid parking at Jeju Halla Hospital.'
         ]
@@ -224,7 +224,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         icon: <Car className="w-5.5 h-5.5 text-rose-600" />,
         title: t.zh.carTitle,
         lines: [
-          '⚠️ [不可停车] 莲洞 Felice 大厦及心药店（Maum Pharmacy）内不提供专属车辆停车位。',
+          '⚠️ [不可停车] 莲洞 Felice 大厦及心药店（Heart Pharm）内不提供专属车辆停车位。',
           '药店前的道令路主干道及周边道路为固定的违法停放车辆监控取证罚款区。严禁自驾停车，请务必乘坐公共交通。',
           '如您开车前来，需自行在附近寻找路边公共收费车位或使用汉拿医院内部的收费停车场。'
         ]
@@ -262,13 +262,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
     },
     en: {
       maum: {
-        name: 'Maum Pharmacy (Yeondong Felice 1F)',
+        name: 'Heart Pharm (Yeondong Felice 1F)',
         desc: 'Rooms 103 & 110, 73 Doryeong-ro, Yeondong, Jeju-si. 365-day late-night prescription pharmacy.',
         distance: 'Destination'
       },
       hallahos: {
         name: 'Jeju Halla Hospital',
-        desc: '65 Doryeong-ro. Leading multi-specialty general hospital in Jeju (120m west of Maum Pharmacy).',
+        desc: '65 Doryeong-ro. Leading multi-specialty general hospital in Jeju (120m west of Heart Pharm).',
         distance: '1.5 min walk'
       },
       oliveyoung: {
@@ -278,12 +278,12 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       manhattan: {
         name: 'Manhattan Hotel',
-        desc: '76 Doryeong-ro. Hotel located directly opposite north of Maum Pharmacy.',
+        desc: '76 Doryeong-ro. Hotel located directly opposite north of Heart Pharm.',
         distance: '1 min walk'
       },
       lotte: {
         name: 'Lotte Duty Free Jeju',
-        desc: '83 Doryeong-ro. Prime duty free shopping complex located 80m east of Maum Pharmacy.',
+        desc: '83 Doryeong-ro. Prime duty free shopping complex located 80m east of Heart Pharm.',
         distance: '1 min walk'
       }
     },
@@ -409,7 +409,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                   </div>
                 </div>
                 <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-emerald-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow">
-                  {language === 'ko' ? '마음약국' : language === 'en' ? 'Maum Pharmacy' : '心药店'}
+                  {language === 'ko' ? '마음약국' : language === 'en' ? 'Heart Pharm' : '心药店'}
                 </span>
               </button>
 
