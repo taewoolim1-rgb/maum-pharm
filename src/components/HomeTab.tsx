@@ -122,7 +122,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
       noticeTitle: '마음약국 소식 및 공지사항',
       adminLogin: '관리자 로그인',
       adminActive: '관리자 권한 활성화됨',
-      adminPasscodePlaceholder: '관리자 비밀번호 (기본: 1234)',
+      adminPasscodePlaceholder: '관리자 비밀번호',
       adminPasscodeIncorrect: '비밀번호가 일치하지 않습니다.',
       adminConfirmDelete: '이 공지사항을 삭제하시겠습니까?',
       addNotice: '공지사항 추가',
@@ -192,7 +192,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '365일 야간 조제',
           title: '365일 연중무휴\n매일 밤 10시까지 불을 밝힙니다',
           subtitle: '늦은 밤 갑작스러운 통증이나 비상 상황에도 마음약국은 늘 같은 자리에서 환자분을 기다립니다.',
-          bgGradient: 'from-sky-950 via-indigo-950 to-teal-950',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -200,7 +200,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '',
           title: '마음약국 실물 간판 &\n대표 안심 서비스',
           subtitle: '한 분 한 분께 정성 어린 따뜻한 복약 상담을 약속드립니다.',
-          bgGradient: 'from-emerald-950 via-teal-900 to-emerald-900',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -208,7 +208,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '공식 인스타그램',
           title: '마음약국 공식 인스타그램',
           subtitle: '인스타그램을 팔로우하고 다양한 건강 정보와 소식을 받아보세요!',
-          bgGradient: 'from-[#14051a] via-[#3d0f3c] to-[#14051a]',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         }
       ]
@@ -221,7 +221,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
       noticeTitle: 'Heart Pharm News & Announcements',
       adminLogin: 'Admin Access',
       adminActive: 'Admin Session Active',
-      adminPasscodePlaceholder: 'Passcode (Default: 1234)',
+      adminPasscodePlaceholder: 'Admin passcode',
       adminPasscodeIncorrect: 'Incorrect passcode.',
       adminConfirmDelete: 'Are you sure you want to delete this announcement?',
       addNotice: 'Add Announcement',
@@ -291,7 +291,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '365 Days Late-Night Pharmacy',
           title: 'Open 365 Days\nWe Stay Lit Until 10 PM Every Night',
           subtitle: 'Even during sudden pain or emergencies late at night, Heart Pharm is always here waiting for you.',
-          bgGradient: 'from-sky-950 via-indigo-950 to-teal-950',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -299,7 +299,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '',
           title: 'Maum Pharmacy Signature Services',
           subtitle: 'We promise warm and sincere medication counseling for each and every visitor.',
-          bgGradient: 'from-emerald-950 via-teal-900 to-emerald-900',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -307,7 +307,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: 'Official Instagram',
           title: 'Official Instagram',
           subtitle: 'Follow our Instagram for health updates and news.',
-          bgGradient: 'from-[#14051a] via-[#3d0f3c] to-[#14051a]',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         }
       ]
@@ -320,7 +320,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
       noticeTitle: '心药店动态与公告事项',
       adminLogin: '管理员登录',
       adminActive: '管理员权限已激活',
-      adminPasscodePlaceholder: '管理员密码 (默认: 1234)',
+      adminPasscodePlaceholder: '管理员密码',
       adminPasscodeIncorrect: '密码不正确。',
       adminConfirmDelete: '确定要删除此公告吗？',
       addNotice: '添加公告',
@@ -390,7 +390,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '365天夜间配药',
           title: '365天全年无休\n每晚营业至10点亮灯守护',
           subtitle: '在深夜突发疼痛 or 紧急情况下，心药店始终在同一个地方守护着您。',
-          bgGradient: 'from-sky-950 via-indigo-950 to-teal-950',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -398,7 +398,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '',
           title: '心药店实体看板与代表服务',
           subtitle: '我们承诺为每一位患者提供真诚、温馨的用药咨询。',
-          bgGradient: 'from-emerald-950 via-teal-900 to-emerald-900',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -406,7 +406,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '官方 Instagram',
           title: '心药店官方 Instagram',
           subtitle: '关注官方 Instagram，获取最新健康资讯。',
-          bgGradient: 'from-[#14051a] via-[#3d0f3c] to-[#14051a]',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         }
       ]
@@ -582,9 +582,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
             transition={{ duration: 0.8 }}
             className={`absolute inset-0 bg-gradient-to-r ${bannerSlides[currentSlide].bgGradient} flex flex-col justify-center px-8 md:px-20 py-16`}
           >
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-10 translate-x-12 -translate-y-12 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500 rounded-full filter blur-3xl opacity-5 -translate-x-12 translate-y-12 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-[0.07] translate-x-12 -translate-y-12 pointer-events-none" />
 
             <div className="w-full relative z-10 max-w-6xl mx-auto">
               {bannerSlides[currentSlide].id === 1 ? (

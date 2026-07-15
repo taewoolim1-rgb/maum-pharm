@@ -5,20 +5,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { 
-  MapPin, 
-  Phone, 
-  Clock, 
-  Car, 
-  Navigation, 
-  Bus, 
-  Check, 
+import {
+  MapPin,
+  Phone,
+  Clock,
+  Car,
+  Navigation,
+  Bus,
+  Check,
   CalendarDays,
-  Info,
   ExternalLink,
   ChevronRight,
-  Heart,
-  Globe
+  Globe,
+  Instagram
 } from 'lucide-react';
 
 import { Language } from '../types';
@@ -30,7 +29,6 @@ interface LocationTabProps {
 }
 
 export default function LocationTab({ isPharmacyOpen, language, setLanguage }: LocationTabProps) {
-  const [selectedMapPin, setSelectedMapPin] = useState<string>('maum');
   const [minutesUntilOpen, setMinutesUntilOpen] = useState<number>(0);
   const [minutesUntilClose, setMinutesUntilClose] = useState<number>(0);
 
@@ -50,8 +48,16 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
 
       if (totalMinutes < openMinutes) {
         setMinutesUntilOpen(openMinutes - totalMinutes);
+        setMinutesUntilClose(0);
       } else if (totalMinutes < closeMinutes) {
         setMinutesUntilClose(closeMinutes - totalMinutes);
+        setMinutesUntilOpen(0);
+      } else {
+        // Past closing time: count down to tomorrow's opening
+        const tomorrowIsWeekend = (day + 1) % 7 === 0 || (day + 1) % 7 === 6;
+        const tomorrowOpenMinutes = tomorrowIsWeekend ? 15 * 60 : 8.5 * 60;
+        setMinutesUntilOpen((24 * 60 - totalMinutes) + tomorrowOpenMinutes);
+        setMinutesUntilClose(0);
       }
     };
 
@@ -70,8 +76,8 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       busTitle: '대중교통 (버스 이용 시)',
       carTitle: '자가용 이용 및 주차 불가 안내',
       mapTitle: '도령로(연동) 중심가 로컬 약도 (가상 지도)',
-      mapHelper: '마커를 선택하면 상세 설명이 표시됩니다.',
       phoneLabel: '전화 및 조제 상담 문의',
+      instagramLabel: '인스타그램',
       addressLabel: '도로명 주소',
       addressValue: '제주시 도령로 73, 103, 110호',
       destination: '목적지',
@@ -101,8 +107,8 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       busTitle: 'Public Transit (By Bus)',
       carTitle: 'Driving & Parking (NO PARKING)',
       mapTitle: 'Doryeong-ro (Yeondong) Local Map (Interactive)',
-      mapHelper: 'SELECT A MARKER FOR DETAILS',
       phoneLabel: 'Inquiries & Consultations',
+      instagramLabel: 'Instagram',
       addressLabel: 'Street Address',
       addressValue: 'Rooms 103 & 110, 73 Doryeong-ro, Jeju-si',
       destination: 'Destination',
@@ -132,8 +138,8 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       busTitle: '公共交通 (乘坐公交车时)',
       carTitle: '自驾及禁止停车指南',
       mapTitle: '道令路 (莲洞) 街区局部指南图 (互动地图)',
-      mapHelper: '点击标记查看详细说明',
       phoneLabel: '电话与调配咨询',
+      instagramLabel: 'Instagram',
       addressLabel: '道路名地址',
       addressValue: '济州市道令路 73号 103, 110室',
       destination: '目的地',
@@ -174,7 +180,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         title: t.ko.busTitle,
         lines: [
           '제주국제공항에서 일반 간선버스 315번, 325번, 332번, 343번, 365번, 465번, 466번 탑승 ➡️ "제주한라병원" 정류장 하차 후 연동 펠리체 빌딩(도령로 73) 방면으로 도보 1.5분 소요 (공항에서 약 10~15분 소요)',
-          '제주국제공항에서 급행 버스 151번, 152번, 181번, 182번 탑승 ➡️ "제주한라병원" 정류장 하차 후 도로를 따라 동쪽으로 약 120m 이동하시면 도령로 대로변 펠리체 빌딩 1층 103, 110호에서 쉽게 찾으실 수 있습니다.'
+          '제주국제공항에서 급행 버스 151번, 152번, 181번, 182번 탑승 ➡️ "제주한라병원" 정류장 하차 후 도로를 따라 서쪽으로 약 120m 이동하시면 도령로 대로변 펠리체 빌딩 1층 103, 110호에서 쉽게 찾으실 수 있습니다.'
         ]
       },
       {
@@ -195,7 +201,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         title: t.en.busTitle,
         lines: [
           'From Jeju Int\'l Airport, take Bus 315, 325, 332, 343, 365, 465, or 466 ➡️ Get off at "Jeju Halla Hospital" stop, then walk 1.5 min to Yeondong Felice Building (Doryeong-ro 73). (Takes approx. 10-15 min from the airport).',
-          'From Jeju Int\'l Airport, take Express Bus 151, 152, 181, or 182 ➡️ Get off at "Jeju Halla Hospital" stop, then walk 120m east along Doryeong-ro. Located on 1F Room 103 & 110.'
+          'From Jeju Int\'l Airport, take Express Bus 151, 152, 181, or 182 ➡️ Get off at "Jeju Halla Hospital" stop, then walk 120m west along Doryeong-ro. Located on 1F Room 103 & 110.'
         ]
       },
       {
@@ -216,7 +222,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         title: t.zh.busTitle,
         lines: [
           '从济州国际机场乘坐普通干线公交 315、325、332、343、365、465、466路 ➡️ 在“济州汉拿医院”站下车，朝莲洞 Felice 大厦（道令路73号）步行1.5分钟。（从机场出发需10~15分钟）。',
-          '从济州国际机场乘坐快速/急行公交 151、152、181、182路 ➡️ 在“济州汉拿医院”站下车，沿着道令路往东走120米，即可在 Felice 大厦一楼 103、110号找到心药店。'
+          '从济州国际机场乘坐快速/急行公交 151、152、181、182路 ➡️ 在”济州汉拿医院”站下车，沿着道令路往西走120米，即可在 Felice 大厦一楼 103、110号找到心药店。'
         ]
       },
       {
@@ -241,13 +247,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       hallahos: {
         name: '제주한라병원',
-        desc: '도령로 65. 도내 최고 수준의 대형 종합 의료 기관 (마음약국 서쪽 120m 위치)',
+        desc: '도령로 65. 도내 최고 수준의 대형 종합 의료 기관 (마음약국 동쪽 120m 위치)',
         distance: '도보 1.5분'
       },
       oliveyoung: {
-        name: '올리브영 제주한라병원점',
-        desc: '도령로 65. 한라병원 바로 옆에 위치한 편리한 헬스&뷰티 스토어.',
-        distance: '도보 1.5분'
+        name: '올리브영 (마음약국 동일 건물)',
+        desc: '도령로 73. 마음약국과 같은 건물(연동 펠리체) 1층에 위치한 헬스&뷰티 스토어.',
+        distance: '도보 30초'
       },
       manhattan: {
         name: '맨하탄 호텔',
@@ -256,7 +262,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       lotte: {
         name: '롯데면세점 제주점',
-        desc: '도령로 83. 메종 글래드 제주 인근에 위치한 면세점 쇼핑 특구 (마음약국 동쪽 80m)',
+        desc: '도령로 83. 메종 글래드 제주 인근에 위치한 면세점 쇼핑 특구 (마음약국 서쪽 80m)',
         distance: '도보 1분'
       }
     },
@@ -268,13 +274,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       hallahos: {
         name: 'Jeju Halla Hospital',
-        desc: '65 Doryeong-ro. Leading multi-specialty general hospital in Jeju (120m west of Heart Pharm).',
+        desc: '65 Doryeong-ro. Leading multi-specialty general hospital in Jeju (120m east of Heart Pharm).',
         distance: '1.5 min walk'
       },
       oliveyoung: {
-        name: 'Olive Young (Jeju Halla Hospital)',
-        desc: '65 Doryeong-ro. Health & beauty drugstore located right next to Jeju Halla Hospital.',
-        distance: '1.5 min walk'
+        name: 'Olive Young (Same Building as Heart Pharm)',
+        desc: '73 Doryeong-ro. Health & beauty drugstore on 1F of the same Yeondong Felice Building as Heart Pharm.',
+        distance: '30 sec walk'
       },
       manhattan: {
         name: 'Manhattan Hotel',
@@ -283,7 +289,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       lotte: {
         name: 'Lotte Duty Free Jeju',
-        desc: '83 Doryeong-ro. Prime duty free shopping complex located 80m east of Heart Pharm.',
+        desc: '83 Doryeong-ro. Prime duty free shopping complex located 80m west of Heart Pharm.',
         distance: '1 min walk'
       }
     },
@@ -295,13 +301,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       hallahos: {
         name: '济州汉拿医院',
-        desc: '道令路65号。济州省内最高水平的大型综合医疗机构（位于心药店西侧120米处）。',
+        desc: '道令路65号。济州省内最高水平的大型综合医疗机构（位于心药店东侧120米处）。',
         distance: '步行 1.5分钟'
       },
       oliveyoung: {
-        name: '欧利芙洋 (济州汉拿医院店)',
-        desc: '道令路65号。位于汉拿医院正旁边的美妆与健康便利零售店。',
-        distance: '步行 1.5分钟'
+        name: '欧利芙洋 (与心药店同栋建筑)',
+        desc: '道令路73号。与心药店同在莲洞 Felice 大厦一楼的美妆与健康便利零售店。',
+        distance: '步行 30秒'
       },
       manhattan: {
         name: '曼哈顿酒店',
@@ -310,13 +316,11 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       lotte: {
         name: '乐天免税店 济州店',
-        desc: '道令路83号。紧邻济州梅森格莱德酒店（Maison Glad）的优质免税购物商城（心药店东侧80米）。',
+        desc: '道令路83号。紧邻济州梅森格莱德酒店（Maison Glad）的优质免税购物商城（心药店西侧80米）。',
         distance: '步行 1分钟'
       }
     }
   };
-
-  const selectedPinInfo = mapPinsTranslation[language][selectedMapPin as keyof typeof mapPinsTranslation['ko']] || mapPinsTranslation[language].maum;
 
   return (
     <div className="space-y-12 pb-16">
@@ -360,143 +364,43 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                 <MapPin className="w-4 h-4 text-emerald-600" />
                 {t[language].mapTitle}
               </span>
-              <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider">{t[language].mapHelper}</span>
             </div>
 
-            {/* Interactive SVG Map */}
-            <div className="w-full h-80 rounded-2xl bg-slate-900 relative border border-slate-800 overflow-hidden flex items-center justify-center">
-              {/* Map grid lines aesthetic */}
-              <div className="absolute inset-0 opacity-5 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px]" />
+            {/* Location map */}
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm">
+              <img
+                src="/images/heart-pharmacy-map.jpg"
+                alt="Heart Pharmacy location map"
+                className="w-full h-auto block"
+              />
+            </div>
 
-              {/* Roads / Svg layout illustration of Doryeong-ro Junction */}
-              <svg className="absolute inset-0 w-full h-full text-slate-800/20" viewBox="0 0 400 300">
-                {/* Blocks shading */}
-                <rect x="15" y="15" width="130" height="100" fill="#1e293b" opacity="0.3" rx="12" />
-                <rect x="165" y="15" width="105" height="100" fill="#1e293b" opacity="0.3" rx="12" />
-                <rect x="290" y="15" width="95" height="100" fill="#1e293b" opacity="0.3" rx="12" />
-                
-                <rect x="15" y="185" width="130" height="100" fill="#1e293b" opacity="0.3" rx="12" />
-                <rect x="165" y="185" width="105" height="100" fill="#1e293b" opacity="0.3" rx="12" />
-                <rect x="290" y="185" width="95" height="100" fill="#1e293b" opacity="0.3" rx="12" />
-
-                {/* Horizontal main road (Doryeong-ro) */}
-                <line x1="0" y1="150" x2="400" y2="150" stroke="#334155" strokeWidth="36" strokeLinecap="round" />
-                <line x1="0" y1="150" x2="400" y2="150" stroke="#1e293b" strokeWidth="2" strokeDasharray="6,6" />
-
-                {/* Vertical road 1 (intersecting street) */}
-                <line x1="155" y1="0" x2="155" y2="300" stroke="#334155" strokeWidth="20" strokeLinecap="round" />
-                
-                {/* Vertical road 2 (intersecting street) */}
-                <line x1="280" y1="0" x2="280" y2="300" stroke="#334155" strokeWidth="20" strokeLinecap="round" />
-
-                {/* Text Labels for Streets */}
-                <text x="35" y="154" fill="#94a3b8" fontSize="8" fontWeight="bold" letterSpacing="1" className="font-sans opacity-65">도령로 (Doryeong-ro)</text>
-              </svg>
-
-              {/* Interactive Markers */}
-              {/* 1. 마음약국 (도령로 73, 연동 펠리체 1층) - South side */}
-              <button 
-                id="pin-maum"
-                onClick={() => setSelectedMapPin('maum')}
-                className={`absolute top-[215px] left-[215px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
-                  selectedMapPin === 'maum' ? 'scale-125' : 'hover:scale-110'
-                }`}
-              >
-                <div className="relative">
-                  <div className="absolute -inset-2 bg-emerald-500 rounded-full animate-ping opacity-25" />
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 font-bold border-2 border-white flex items-center justify-center shadow-lg">
-                    <Heart className="w-5.5 h-5.5 fill-slate-950" />
+            {/* Nearby Landmarks */}
+            <div className="space-y-2.5">
+              {(['hallahos', 'oliveyoung', 'manhattan', 'lotte'] as const).map((key) => {
+                const landmark = mapPinsTranslation[language][key];
+                return (
+                  <div key={key} className="p-4 rounded-2xl bg-white border border-slate-100 flex items-start gap-3 shadow-sm">
+                    <div className="p-2 rounded-xl bg-emerald-50 text-emerald-700 flex-shrink-0">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div className="space-y-0.5">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-xs font-bold text-slate-800">{landmark.name}</h4>
+                        <span className="text-[10px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.2 rounded font-semibold">
+                          {landmark.distance}
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500 leading-relaxed font-light">{landmark.desc}</p>
+                    </div>
                   </div>
-                </div>
-                <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap bg-emerald-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow">
-                  {language === 'ko' ? '마음약국' : language === 'en' ? 'Heart Pharm' : '心药店'}
-                </span>
-              </button>
-
-              {/* 2. 제주한라병원 (도령로 65) - South side, West block */}
-              <button 
-                id="pin-hallahos"
-                onClick={() => setSelectedMapPin('hallahos')}
-                className={`absolute top-[215px] left-[55px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
-                  selectedMapPin === 'hallahos' ? 'scale-125' : 'hover:scale-110'
-                }`}
-              >
-                <div className="w-8 h-8 rounded-full bg-slate-800 text-white border border-slate-700 flex items-center justify-center shadow-md">
-                  <MapPin className="w-4 h-4 text-rose-500" />
-                </div>
-                <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-800 text-slate-300 text-[9px] px-1.5 py-0.5 rounded border border-slate-700">
-                  {language === 'ko' ? '한라병원' : language === 'en' ? 'Halla Hospital' : '汉拿医院'}
-                </span>
-              </button>
-
-              {/* 3. 올리브영 제주한라병원점 - South side, next to Halla Hospital */}
-              <button 
-                id="pin-oliveyoung"
-                onClick={() => setSelectedMapPin('oliveyoung')}
-                className={`absolute top-[215px] left-[115px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
-                  selectedMapPin === 'oliveyoung' ? 'scale-125' : 'hover:scale-110'
-                }`}
-              >
-                <div className="w-8 h-8 rounded-full bg-slate-800 text-white border border-slate-700 flex items-center justify-center shadow-md">
-                  <MapPin className="w-4 h-4 text-lime-400" />
-                </div>
-                <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-800 text-slate-300 text-[9px] px-1.5 py-0.5 rounded border border-slate-700">
-                  {language === 'ko' ? '올리브영' : language === 'en' ? 'Olive Young' : '欧利芙洋'}
-                </span>
-              </button>
-
-              {/* 4. 맨하탄 호텔 - North side, across the street from 마음약국 */}
-              <button 
-                id="pin-manhattan"
-                onClick={() => setSelectedMapPin('manhattan')}
-                className={`absolute top-[85px] left-[215px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
-                  selectedMapPin === 'manhattan' ? 'scale-125' : 'hover:scale-110'
-                }`}
-              >
-                <div className="w-8 h-8 rounded-full bg-slate-800 text-white border border-slate-700 flex items-center justify-center shadow-md">
-                  <MapPin className="w-4 h-4 text-amber-400" />
-                </div>
-                <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-800 text-slate-300 text-[9px] px-1.5 py-0.5 rounded border border-slate-700">
-                  {language === 'ko' ? '맨하탄 호텔' : language === 'en' ? 'Manhattan Hotel' : '曼哈顿酒店'}
-                </span>
-              </button>
-
-              {/* 5. 롯데면세점 제주점 - South side, East block */}
-              <button 
-                id="pin-lotte"
-                onClick={() => setSelectedMapPin('lotte')}
-                className={`absolute top-[215px] left-[345px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
-                  selectedMapPin === 'lotte' ? 'scale-125' : 'hover:scale-110'
-                }`}
-              >
-                <div className="w-8 h-8 rounded-full bg-slate-800 text-white border border-slate-700 flex items-center justify-center shadow-md">
-                  <MapPin className="w-4 h-4 text-sky-400" />
-                </div>
-                <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-800 text-slate-300 text-[9px] px-1.5 py-0.5 rounded border border-slate-700">
-                  {language === 'ko' ? '롯데면세점' : language === 'en' ? 'Lotte Duty Free' : '乐天免税店'}
-                </span>
-              </button>
-            </div>
-
-            {/* Selected Landmark Info box */}
-            <div className="p-5 rounded-2xl bg-white border border-slate-100 flex items-start gap-3.5 shadow-sm">
-              <div className="p-2.5 rounded-xl bg-slate-100 text-slate-700 flex-shrink-0">
-                <Info className="w-5.5 h-5.5" />
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <h4 className="text-xs font-bold text-slate-800">{selectedPinInfo.name}</h4>
-                  <span className="text-[10px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.2 rounded font-semibold">
-                    {selectedPinInfo.distance}
-                  </span>
-                </div>
-                <p className="text-xs text-slate-500 leading-relaxed font-light">{selectedPinInfo.desc}</p>
-              </div>
+                );
+              })}
             </div>
           </div>
 
           {/* Quick Contact Widget */}
-          <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
                 <Phone className="w-5 h-5" />
@@ -515,6 +419,20 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                 <p className="text-xs font-extrabold text-slate-800">{t[language].addressValue}</p>
               </div>
             </div>
+            <a
+              href="https://www.instagram.com/heart.pharm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-100 transition-colors">
+                <Instagram className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-[10px] text-slate-400 font-medium">{t[language].instagramLabel}</p>
+                <p className="text-sm font-extrabold text-slate-800 group-hover:text-emerald-700 transition-colors">@heart.pharm</p>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -524,7 +442,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
             <div className="pb-4 border-b border-slate-100 flex justify-between items-start gap-2">
               <div className="space-y-1">
                 <h3 className="text-base font-extrabold text-slate-800 flex items-center gap-1.5">
-                  <Clock className="w-5.5 h-5.5 text-emerald-600 animate-pulse" />
+                  <Clock className="w-5.5 h-5.5 text-emerald-600" />
                   {t[language].timetableTitle}
                 </h3>
                 <p className="text-[10px] text-slate-400 font-light">{t[language].timetableSubtitle}</p>

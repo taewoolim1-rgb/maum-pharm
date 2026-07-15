@@ -5,18 +5,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Heart, 
-  Menu, 
-  X, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Sparkles, 
-  ShieldAlert, 
-  ChevronRight, 
+import {
+  Heart,
+  Menu,
+  X,
+  Phone,
+  MapPin,
+  Clock,
+  Sparkles,
+  ShieldAlert,
+  ChevronRight,
   Stethoscope,
-  Globe
+  Globe,
+  Instagram
 } from 'lucide-react';
 
 import { TabId, Language } from './types';
@@ -298,7 +299,7 @@ export default function App() {
               {/* Mobile Quick Contacts */}
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
                 <span className="flex items-center gap-1 font-semibold">
-                  <Clock className="w-3.5 h-3.5 text-emerald-600 animate-pulse" /> {isPharmacyOpen ? curr.headerOpen : curr.headerClosed}
+                  <Clock className="w-3.5 h-3.5 text-emerald-600" /> {isPharmacyOpen ? curr.headerOpen : curr.headerClosed}
                 </span>
                 <span className="font-extrabold text-slate-800 flex items-center gap-1">
                   <Phone className="w-3.5 h-3.5 text-emerald-600" /> 064-900-4057
@@ -349,6 +350,15 @@ export default function App() {
             <p className="text-[11px] text-slate-500 leading-relaxed font-light max-w-md">
               {curr.footerDesc}
             </p>
+            <a
+              href="https://www.instagram.com/heart.pharm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[11px] text-slate-500 hover:text-emerald-400 transition-colors"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+              @heart.pharm
+            </a>
           </div>
 
           {/* Legal / Licensing Information */}
