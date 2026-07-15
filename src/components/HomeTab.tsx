@@ -125,7 +125,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '마음약국의 약속',
           title: '몸의 건강을 넘어\n마음의 평안까지 처방합니다',
           subtitle: '제주의 맑은 자연 속에서, 한 분 한 분께 정성 어린 따뜻한 복약 상담을 약속드립니다.',
-          bgGradient: 'from-emerald-950 via-teal-900 to-emerald-900',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -133,7 +133,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '365일 야간 조제',
           title: '365일 연중무휴\n매일 밤 10시까지 불을 밝힙니다',
           subtitle: '늦은 밤 갑작스러운 통증이나 비상 상황에도 마음약국은 늘 같은 자리에서 환자분을 기다립니다.',
-          bgGradient: 'from-sky-950 via-indigo-950 to-teal-950',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         }
       ]
@@ -165,7 +165,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: 'Our Promise',
           title: 'Prescribing Peace of Mind\nBeyond Physical Health',
           subtitle: 'In the pure nature of Jeju, we promise warm and sincere medication counseling for each and every visitor.',
-          bgGradient: 'from-emerald-950 via-teal-900 to-emerald-900',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -173,7 +173,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '365 Days Late-Night Pharmacy',
           title: 'Open 365 Days\nWe Stay Lit Until 10 PM Every Night',
           subtitle: 'Even during sudden pain or emergencies late at night, Maum Pharmacy is always here waiting for you.',
-          bgGradient: 'from-sky-950 via-indigo-950 to-teal-950',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         }
       ]
@@ -205,7 +205,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '心药店的承诺',
           title: '超越身体健康\n处方直至心灵的平静',
           subtitle: '在济州清净的自然中，我们承诺为每一位患者提供真诚、温馨的用药咨询。',
-          bgGradient: 'from-emerald-950 via-teal-900 to-emerald-900',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         },
         {
@@ -213,7 +213,7 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
           badge: '365天夜间配药',
           title: '365天全年无休\n每晚营业至10点亮灯守护',
           subtitle: '在深夜突发疼痛 or 紧急情况下，心药店始终在同一个地方守护着您。',
-          bgGradient: 'from-sky-950 via-indigo-950 to-teal-950',
+          bgGradient: 'from-emerald-950 via-slate-900 to-slate-950',
           textColor: 'text-white'
         }
       ]
@@ -346,10 +346,8 @@ export default function HomeTab({ setActiveTab, isPharmacyOpen, language }: Home
             transition={{ duration: 0.8 }}
             className={`absolute inset-0 bg-gradient-to-r ${bannerSlides[currentSlide].bgGradient} flex flex-col justify-center px-8 md:px-20 py-16`}
           >
-            {/* Background Aesthetic Lines */}
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-10 translate-x-12 -translate-y-12 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500 rounded-full filter blur-3xl opacity-5 -translate-x-12 translate-y-12 pointer-events-none" />
+            {/* Subtle background accent */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full filter blur-3xl opacity-[0.07] translate-x-12 -translate-y-12 pointer-events-none" />
 
             <div className="max-w-3xl space-y-6 relative z-10">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">

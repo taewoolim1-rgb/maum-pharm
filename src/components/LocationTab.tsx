@@ -5,20 +5,21 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { 
-  MapPin, 
-  Phone, 
-  Clock, 
-  Car, 
-  Navigation, 
-  Bus, 
-  Check, 
+import {
+  MapPin,
+  Phone,
+  Clock,
+  Car,
+  Navigation,
+  Bus,
+  Check,
   CalendarDays,
   Info,
   ExternalLink,
   ChevronRight,
   Heart,
-  Globe
+  Globe,
+  Instagram
 } from 'lucide-react';
 
 import { Language } from '../types';
@@ -80,6 +81,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       mapTitle: '도령로(연동) 중심가 로컬 약도 (가상 지도)',
       mapHelper: '마커를 선택하면 상세 설명이 표시됩니다.',
       phoneLabel: '전화 및 조제 상담 문의',
+      instagramLabel: '인스타그램',
       addressLabel: '도로명 주소',
       addressValue: '제주시 도령로 73, 103, 110호',
       destination: '목적지',
@@ -111,6 +113,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       mapTitle: 'Doryeong-ro (Yeondong) Local Map (Interactive)',
       mapHelper: 'SELECT A MARKER FOR DETAILS',
       phoneLabel: 'Inquiries & Consultations',
+      instagramLabel: 'Instagram',
       addressLabel: 'Street Address',
       addressValue: 'Rooms 103 & 110, 73 Doryeong-ro, Jeju-si',
       destination: 'Destination',
@@ -142,6 +145,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       mapTitle: '道令路 (莲洞) 街区局部指南图 (互动地图)',
       mapHelper: '点击标记查看详细说明',
       phoneLabel: '电话与调配咨询',
+      instagramLabel: 'Instagram',
       addressLabel: '道路名地址',
       addressValue: '济州市道令路 73号 103, 110室',
       destination: '目的地',
@@ -504,7 +508,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
           </div>
 
           {/* Quick Contact Widget */}
-          <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-6 rounded-3xl bg-white border border-slate-100 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
                 <Phone className="w-5 h-5" />
@@ -523,6 +527,20 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                 <p className="text-xs font-extrabold text-slate-800">{t[language].addressValue}</p>
               </div>
             </div>
+            <a
+              href="https://www.instagram.com/heart.pharm/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-100 transition-colors">
+                <Instagram className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-[10px] text-slate-400 font-medium">{t[language].instagramLabel}</p>
+                <p className="text-sm font-extrabold text-slate-800 group-hover:text-emerald-700 transition-colors">@heart.pharm</p>
+              </div>
+            </a>
           </div>
         </div>
 
@@ -532,7 +550,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
             <div className="pb-4 border-b border-slate-100 flex justify-between items-start gap-2">
               <div className="space-y-1">
                 <h3 className="text-base font-extrabold text-slate-800 flex items-center gap-1.5">
-                  <Clock className="w-5.5 h-5.5 text-emerald-600 animate-pulse" />
+                  <Clock className="w-5.5 h-5.5 text-emerald-600" />
                   {t[language].timetableTitle}
                 </h3>
                 <p className="text-[10px] text-slate-400 font-light">{t[language].timetableSubtitle}</p>
