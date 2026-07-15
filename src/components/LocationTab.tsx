@@ -182,7 +182,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         title: t.ko.busTitle,
         lines: [
           '제주국제공항에서 일반 간선버스 315번, 325번, 332번, 343번, 365번, 465번, 466번 탑승 ➡️ "제주한라병원" 정류장 하차 후 연동 펠리체 빌딩(도령로 73) 방면으로 도보 1.5분 소요 (공항에서 약 10~15분 소요)',
-          '제주국제공항에서 급행 버스 151번, 152번, 181번, 182번 탑승 ➡️ "제주한라병원" 정류장 하차 후 도로를 따라 동쪽으로 약 120m 이동하시면 도령로 대로변 펠리체 빌딩 1층 103, 110호에서 쉽게 찾으실 수 있습니다.'
+          '제주국제공항에서 급행 버스 151번, 152번, 181번, 182번 탑승 ➡️ "제주한라병원" 정류장 하차 후 도로를 따라 서쪽으로 약 120m 이동하시면 도령로 대로변 펠리체 빌딩 1층 103, 110호에서 쉽게 찾으실 수 있습니다.'
         ]
       },
       {
@@ -203,7 +203,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         title: t.en.busTitle,
         lines: [
           'From Jeju Int\'l Airport, take Bus 315, 325, 332, 343, 365, 465, or 466 ➡️ Get off at "Jeju Halla Hospital" stop, then walk 1.5 min to Yeondong Felice Building (Doryeong-ro 73). (Takes approx. 10-15 min from the airport).',
-          'From Jeju Int\'l Airport, take Express Bus 151, 152, 181, or 182 ➡️ Get off at "Jeju Halla Hospital" stop, then walk 120m east along Doryeong-ro. Located on 1F Room 103 & 110.'
+          'From Jeju Int\'l Airport, take Express Bus 151, 152, 181, or 182 ➡️ Get off at "Jeju Halla Hospital" stop, then walk 120m west along Doryeong-ro. Located on 1F Room 103 & 110.'
         ]
       },
       {
@@ -224,7 +224,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
         title: t.zh.busTitle,
         lines: [
           '从济州国际机场乘坐普通干线公交 315、325、332、343、365、465、466路 ➡️ 在“济州汉拿医院”站下车，朝莲洞 Felice 大厦（道令路73号）步行1.5分钟。（从机场出发需10~15分钟）。',
-          '从济州国际机场乘坐快速/急行公交 151、152、181、182路 ➡️ 在“济州汉拿医院”站下车，沿着道令路往东走120米，即可在 Felice 大厦一楼 103、110号找到心药店。'
+          '从济州国际机场乘坐快速/急行公交 151、152、181、182路 ➡️ 在”济州汉拿医院”站下车，沿着道令路往西走120米，即可在 Felice 大厦一楼 103、110号找到心药店。'
         ]
       },
       {
@@ -249,13 +249,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       hallahos: {
         name: '제주한라병원',
-        desc: '도령로 65. 도내 최고 수준의 대형 종합 의료 기관 (마음약국 서쪽 120m 위치)',
+        desc: '도령로 65. 도내 최고 수준의 대형 종합 의료 기관 (마음약국 동쪽 120m 위치)',
         distance: '도보 1.5분'
       },
       oliveyoung: {
-        name: '올리브영 제주한라병원점',
-        desc: '도령로 65. 한라병원 바로 옆에 위치한 편리한 헬스&뷰티 스토어.',
-        distance: '도보 1.5분'
+        name: '올리브영 (마음약국 동일 건물)',
+        desc: '도령로 73. 마음약국과 같은 건물(연동 펠리체) 1층에 위치한 헬스&뷰티 스토어.',
+        distance: '도보 30초'
       },
       manhattan: {
         name: '맨하탄 호텔',
@@ -264,7 +264,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       lotte: {
         name: '롯데면세점 제주점',
-        desc: '도령로 83. 메종 글래드 제주 인근에 위치한 면세점 쇼핑 특구 (마음약국 동쪽 80m)',
+        desc: '도령로 83. 메종 글래드 제주 인근에 위치한 면세점 쇼핑 특구 (마음약국 서쪽 80m)',
         distance: '도보 1분'
       }
     },
@@ -276,13 +276,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       hallahos: {
         name: 'Jeju Halla Hospital',
-        desc: '65 Doryeong-ro. Leading multi-specialty general hospital in Jeju (120m west of Maum Pharmacy).',
+        desc: '65 Doryeong-ro. Leading multi-specialty general hospital in Jeju (120m east of Maum Pharmacy).',
         distance: '1.5 min walk'
       },
       oliveyoung: {
-        name: 'Olive Young (Jeju Halla Hospital)',
-        desc: '65 Doryeong-ro. Health & beauty drugstore located right next to Jeju Halla Hospital.',
-        distance: '1.5 min walk'
+        name: 'Olive Young (Same Building as Maum Pharmacy)',
+        desc: '73 Doryeong-ro. Health & beauty drugstore on 1F of the same Yeondong Felice Building as Maum Pharmacy.',
+        distance: '30 sec walk'
       },
       manhattan: {
         name: 'Manhattan Hotel',
@@ -291,7 +291,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       lotte: {
         name: 'Lotte Duty Free Jeju',
-        desc: '83 Doryeong-ro. Prime duty free shopping complex located 80m east of Maum Pharmacy.',
+        desc: '83 Doryeong-ro. Prime duty free shopping complex located 80m west of Maum Pharmacy.',
         distance: '1 min walk'
       }
     },
@@ -303,13 +303,13 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       hallahos: {
         name: '济州汉拿医院',
-        desc: '道令路65号。济州省内最高水平的大型综合医疗机构（位于心药店西侧120米处）。',
+        desc: '道令路65号。济州省内最高水平的大型综合医疗机构（位于心药店东侧120米处）。',
         distance: '步行 1.5分钟'
       },
       oliveyoung: {
-        name: '欧利芙洋 (济州汉拿医院店)',
-        desc: '道令路65号。位于汉拿医院正旁边的美妆与健康便利零售店。',
-        distance: '步行 1.5分钟'
+        name: '欧利芙洋 (与心药店同栋建筑)',
+        desc: '道令路73号。与心药店同在莲洞 Felice 大厦一楼的美妆与健康便利零售店。',
+        distance: '步行 30秒'
       },
       manhattan: {
         name: '曼哈顿酒店',
@@ -318,7 +318,7 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
       },
       lotte: {
         name: '乐天免税店 济州店',
-        desc: '道令路83号。紧邻济州梅森格莱德酒店（Maison Glad）的优质免税购物商城（心药店东侧80米）。',
+        desc: '道令路83号。紧邻济州梅森格莱德酒店（Maison Glad）的优质免税购物商城（心药店西侧80米）。',
         distance: '步行 1分钟'
       }
     }
@@ -421,11 +421,11 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                 </span>
               </button>
 
-              {/* 2. 제주한라병원 (도령로 65) - South side, West block */}
-              <button 
+              {/* 2. 제주한라병원 (도령로 65) - South side, East block */}
+              <button
                 id="pin-hallahos"
                 onClick={() => setSelectedMapPin('hallahos')}
-                className={`absolute top-[215px] left-[55px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
+                className={`absolute top-[215px] left-[345px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
                   selectedMapPin === 'hallahos' ? 'scale-125' : 'hover:scale-110'
                 }`}
               >
@@ -437,11 +437,11 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                 </span>
               </button>
 
-              {/* 3. 올리브영 제주한라병원점 - South side, next to Halla Hospital */}
-              <button 
+              {/* 3. 올리브영 - South-middle block, same building as 마음약국 */}
+              <button
                 id="pin-oliveyoung"
                 onClick={() => setSelectedMapPin('oliveyoung')}
-                className={`absolute top-[215px] left-[115px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
+                className={`absolute top-[190px] left-[248px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
                   selectedMapPin === 'oliveyoung' ? 'scale-125' : 'hover:scale-110'
                 }`}
               >
@@ -469,11 +469,11 @@ export default function LocationTab({ isPharmacyOpen, language, setLanguage }: L
                 </span>
               </button>
 
-              {/* 5. 롯데면세점 제주점 - South side, East block */}
-              <button 
+              {/* 5. 롯데면세점 제주점 - South side, West block */}
+              <button
                 id="pin-lotte"
                 onClick={() => setSelectedMapPin('lotte')}
-                className={`absolute top-[215px] left-[345px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
+                className={`absolute top-[215px] left-[55px] -translate-x-1/2 -translate-y-1/2 z-10 transition-all ${
                   selectedMapPin === 'lotte' ? 'scale-125' : 'hover:scale-110'
                 }`}
               >
